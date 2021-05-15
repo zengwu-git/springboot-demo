@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    servlet:
+      load-on-startup: 1
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&serverTimezone=UTC
+      username: root
+      password: 123456
+logging:
+  level:
+    com.zx.springboot: debug
+mybatis:
+  type-aliases-package: com.zx.springboot.springbootdemo.pojo
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+

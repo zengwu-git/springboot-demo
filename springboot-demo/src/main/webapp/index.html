@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+</head>
+
+<body>
+<form id="employee">
+  <div style="text-align: center">员工姓名： <input type="text" name="name" id="name"></div>
+    <div style="text-align: center">员工工号： <input type="text" name="employeeNumber" id="employeeNumber"></div>
+    <div style="text-align: center">员工邮箱： <input type="text" name="employeeEmail" id="employeeEmail"></div>
+    <div style="text-align: center">员工生日： <input type="date" name="birthDate" id="birthDate" style="width: 168px"></div>
+
+   <div style="text-align: center"><button type="button" name="submit" id="submit">提交</button></div>
+</form>
+</body>
+<script type="text/javascript">
+    $("#submit").click(function() {
+        debugger
+        var employee = $("#employee").serialize();
+        $.ajax({
+            url: "account/save",
+            dataType: "json",
+            type: "post",
+            data: employee,
+
+            success: function(result) {
+                alert(result.success)
+                $("#name").val("");
+                $("#employeeEmail").val("");
+                $("#employeeNumber").val("");
+                $("#birthDate").val("");
+            },
+            error: function(data) {
+                // alert("请求出错");
+                // alert(data);
+            }
+        });
+    });
+</script>
+
+</html>`

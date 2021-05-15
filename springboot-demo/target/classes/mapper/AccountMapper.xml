@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.springboot.springbootdemo.mapper.AccountMapper">
+
+    <select id="query" resultType="com.zx.springboot.springbootdemo.pojo.Account">
+       SELECT
+	    id,
+        name,
+        employee_number,
+        employee_email,
+        birth_date
+        FROM
+	    tb_account
+        WHERE
+	   DATE_FORMAT(birth_date,'%m-%d') = DATE_FORMAT(NOW(),'%m-%d')
+    </select>
+
+
+    <insert id="insert">
+        INSERT INTO tb_account(
+        id,
+        name,
+        employee_number,
+        employee_email,
+        birth_date
+        )VALUES (
+        #{id},
+        #{name},
+        #{employeeNumber},
+        #{employeeEmail},
+        #{birthDate}
+        )
+    </insert>
+
+
+</mapper>
